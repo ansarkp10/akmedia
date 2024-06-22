@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>        
+</head>
+<body>
+<div class="logo-details">
+      <div class="logo_name">AKMedia</div>
+      <i class='bx bx-menu' id="btn" ></i>
+  </div>
+  <ul class="nav-list">
+    
+    <li>
+      <a href="{% url 'index' %}">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Home</span>
+      </a>
+       <span class="tooltip">Home</span>
+    </li>
+    <li>
+     <a href="{% url 'about' %}">
+       <i class='bx bx-user' ></i>
+       <span class="links_name">About Us</span>
+     </a>
+     <span class="tooltip">About Us</span>
+   </li>
+   <li>
+     <a href="{% url 'contact' %}">
+       <i class='bx bx-chat' ></i>
+       <span class="links_name">Contact Us</span>
+     </a>
+     <span class="tooltip">Contact Us</span>
+   </li>
+   <li>
+    <a href="{% url 'services' %}">
+      <i class="fas fa-sliders-h"></i>
+      <span class="links_name">Services</span>
+    </a>
+    <span class="tooltip">Services</span>
+  </li>
+   
+  {% if user.is_authenticated %}
+  <li class="profile">
+      <div class="profile-details">
+        <img src="{% static 'images/profile.jpg' %}" alt="profileImg" style="border-radius: 50px;">
+        <div class="name_job">
+         <div class="name">{{ user.username }}</div>
+       </div>
+      </div>
+      <abbr title="Logout"><a href="{% url 'logout' %}"><i class='bx bx-log-out' id="log_out" style="color: white;"></i></a></abbr>
+  </li>
+  {% endif %}
+  </ul>
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services </title>
+    <!-- Font Awesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"/>
+      <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+section {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  width: 100%;
+  padding: 0 1em 1em 1em;
+  text-align: center;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  padding: 2em 1.5em;
+  background: linear-gradient(#ffffff 50%, #40b736 50%);
+  background-size: 100% 200%;
+  background-position: 0 2.5%;
+  border-radius: 5px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: 0.5s;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f194c;
+  margin: 1em 0;
+}
+p {
+
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+.icon-wrapper {
+  background-color: #40b736;
+  position: relative;
+  margin: auto;
+  font-size: 30px;
+  height: 2.5em;
+  width: 2.5em;
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: 0.5s;
+}
+.card:hover {
+  background-position: 0 100%;
+}
+.card:hover .icon-wrapper {
+  background-color: #ffffff;
+  color: #40b736;
+}
+.card:hover h3 {
+  color: #ffffff;
+}
+.card:hover p {
+  color: #f0f0f0;
+}
+@media screen and (min-width: 768px) {
+  section {
+    padding: 0 2em;
+  }
+  .column {
+    flex: 0 50%;
+    max-width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  section {
+    padding: 1em 3em;
+  }
+  .column {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+/* navigation */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #E4E9F7;
+    color: #333;
+    padding-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: #11101D;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open{
+  width: 250px;
+}
+
+.sidebar .logo-details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name{
+  opacity: 1;
+}
+.sidebar .logo-details #btn{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn{
+  text-align: right;
+}
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar.open li .tooltip{
+  display: none;
+}
+.sidebar input{
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  width: 50px;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  background: #1d1b31;
+}
+.sidebar.open input{
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+.sidebar .bx-search{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar.open .bx-search:hover{
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar .bx-search:hover{
+  background: #FFF;
+  color: #11101d;
+}
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #11101D;
+}
+.sidebar li a:hover{
+  background: #FFF;
+}
+.sidebar li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebar.open li a .links_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #11101D;
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom: -8px;
+  padding: 10px 14px;
+  background: #1d1b31;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.sidebar.open li.profile{
+  width: 250px;
+}
+.sidebar li .profile-details{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .job{
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+}
+.sidebar li.profile .job{
+  font-size: 12px;
+}
+.sidebar .profile #log_out{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #1d1b31;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+.home-section{
+  position: relative;
+  background: #E4E9F7;
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+.sidebar.open ~ .home-section{
+  left: 250px;
+  width: calc(100% - 250px);
+}
+.home-section .text{
+  display: inline-block;
+  color: #11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px
+}
+@media (max-width: 420px) {
+  .sidebar li .tooltip{
+    display: none;
+  }
+}
+
+
+    </style>
+  </head>
+  <body style="margin-left: 70px;">
+    <div class="sidebar">
+        {% include 'menu.html' %}
+    </div>
+    <section>
+      <div class="row">
+        <h2 class="section-heading">Our Services</h2>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAQFJREFUSEvtVtsNwjAQcycBNoFJgE1gEmASYBLYBGKJSqcjNHESaD+4v6hpfH401w4jVTcSLv7AP1N+SOozgGVlJxcAq9gZkwa+AziZrmcANmZNVlfHag1gHhSrYuxfJujBAG0DyNEB9zY1BSaoZbwIa6piqwr4U65uLxn750V3QclLD+dvNLWpr0EF9v7SW3osVy1wLFhZTajAOcH6CnCTYLEzlbENVrG/KrAP1j4csMvSNbJJYez9LQ6Wytj7G7uxsgVQGFt/1abfGsoF5lzm/dtXVbBSXTNMHG2soVHIJvyQSEre4keAdzXHn1STBJYYqJtzw6Wem9z/B05K1GrDE6FaMx+rxei3AAAAAElFTkSuQmCC"/>
+            </div>
+            <h3>Text Management</h3>
+            <p>
+                Easily create, edit, and organize your textual content with our intuitive 
+                text management tools, designed to simplify content creation for blogs, 
+                articles, and more.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASFJREFUSEvtl90NwjAMhK+bwCYwCTAJMAkwCWwCo8BJNXIr599V+9A8VWrqLz47l7TDTKObiYtFgndOarysOFbGRwA3JyjDfAA8fg8XHdMCvwFsHMEC38bAlPfZT7gCMGUqWBQTEPX2Ot44Yw0eTCyA6anBeCt4lTqnq9m53KvWmKy5aAoHANwBFnwS8HjPD5ypT98dTHnpcHrQcMZwFzBhDHTv3c06RGiLWnIXMK2UgRg45OV8p+vdDKaE50zb1JI3ga16ptYgkleDKR0lLj0mRXJ+J6dd0ekUq2cqa5pPdcY5zhVbQBX4FLHCVLbynmBpyqjUUpPSmuYsZHD2hy57XKUXnH3CLUbj+Y/QvZpQL3D29TZHtuY5i/yTaM4qFuALwstoH5CtqIoAAAAASUVORK5CYII="/>
+            </div>
+            <h3>Image Handling</h3>
+            <p>
+                Enhance your visual storytelling by uploading, editing, and managing images seamlessly, ensuring
+                 your visuals are always captivating and perfectly presented.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAOxJREFUSEvtlt0NwjAMhK+b0E3YBJikMAlsAp0ENoFeFKNgtZUiVzYP8WOF/cXnPzoEWRfERQO7Kf9XUl8B7Aypj5P/DcBrLYbO+G0Aatd+DV6CzwCG7P0wPGCffU8589lQS2BL7UW1y0RkMmLHXML0zQvMviH4+xgP8B2AyO8CZmdzOgRKhV3Ac03VwEmVco63GKcwqdlcbKxy/brUWCDu41RurpAFIrVmD/FisQQ/K5MrjS+jbXEk9K5mXNY7nUvdvU/jLZbsGJxncdE0mF14MMIJZbZVfwQMZ7jO1bIo6kjq1w1skq/GOUzqD9TIQh+6eSWnAAAAAElFTkSuQmCC"/>
+            </div>
+            <h3>Video Integration</h3>
+            <p>
+                Bring your content to life with our comprehensive video management system, allowing you to 
+                upload, embed, and display videos effortlessly across your site.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAT1JREFUSEvtl9ENwjAMBd1JgEmASYBJgEmASWATYBLoIVuqStK4IVURwhI/SZrLcxzbVDKSVSNxpQs8FZG182A3ETk6176WxcAAD302qvfa1+t33m9i4GutAMV9zQ2PgR89iLi4eSUueAnwUr3TvJokvBT4oqrd8JJgbqcdlFHlpcFu+BDgEPyNUwLM/YaM52hPchCw5+X9wdFc3Sdz/aarSQQTjdKFViKUMmZ5mpx9V/mrVpHJCi6eC/mYdMgBziIy0xJIHWaesY3CeELFwGxqQEomYCudHArQScHzQAPxkWJczG+rDYSBOQRjBi6uGJAZCug2zNXMmfJQu5Sl2DZvF3s7BGoxggu1eKVtWWDPO02t+X5wbrMXU+5WnNPexqDBLqSroSdImjU1dY+heQKO4ExHW87uOd+M9t/pCZmoTx/udBQiAAAAAElFTkSuQmCC"/>            </div>
+            <h3>PDF Support</h3>
+            <p>
+                Upload, manage, and share PDF documents with ease, providing your audience with accessible 
+                and well-organized informational resources.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAkhJREFUSEvFltFxGzEMRKlOkkrsVJKkEseVJK7ESSWJK3H0NHw3axx5p9OPOKORRBJY7AIgeWp3Gqc74bZbgD+11vwQ97/4XM3jWmCAvrXWvnZQAZl3EMDLef1XD2QziGuAf7TWnrozHP/uHxwL/NhaezjP881gH3bTsQWM05/d+XNnsielyhjolxn7GTAO/nZmGB8d2L92oyH4DDiNjoKyH3tlJ/efq5MRMPJSSHUzDqxmftfhHLb4yEHBfc+JCqzEuYdislqtbNmwz3bCMb9ZU7GseNbxdRkVmEgxzDYhR4tBt0spWcs6sChT6gxuCExBwS77tTrG0BaTQA0uWQNKV1DpS/qSsZtZRFI2KmXNd00Jjmvfqgr5ZR1SS4AJbFEwVx0flTtVsbDet4BTjq08XiO36UAt5MbfH5VJxmwkt8qabTHqRdvOPFe5XRfD+rmkpEqdjPfkRjp7G1+1CGHIuv0L8HL0zorLw2AmN2pwKdAB2bNZCwSmzAQ2zbEM07i2hWlARvIFS5hUubNQWav/VwdIPaNnchO9amVPWwsGRkUzquwrYBkm6yo38iKzuRsFh40yj3wOnz4Y4UxZq9zIi8yykVE9Ij1GV2xHZzVz3qUAwKqevSO7eiNhR2CSWN3Jew8BezPzuLriBiddHrujU2/zlZmvCBhYeLKJYl4KCLm9ybD/cBWmwd5jL99dXpUjm3xrebFM31uzHFcm9iHHKYw8XPyuj4IpyyOMaxAwE4iWeusbCCKrfBT8h7k9qXcd3LrhbsD/AW7Euh9au1/tAAAAAElFTkSuQmCC"/>
+            </div>
+            <h3>Word Management</h3>
+            <p>
+                Efficiently handle your Word documents by uploading and organizing them within our system, 
+                making collaboration and effective.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-circle-play"></i>
+                        </div>
+            <h3>Audio Content</h3>
+            <p>
+                Add depth to your content with our robust audio management capabilities, enabling you to 
+                upload and integrate audio files to complement your visual elements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+        
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange(); // Calling the function (optional)
+        });
+        
+        searchBtn.addEventListener("click", () => {
+            // Sidebar open when you click on the search icon
+            sidebar.classList.toggle("open");
+            menuBtnChange(); // Calling the function (optional)
+        });
+        
+        // Following are the code to change sidebar button (optional)
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); // Replacing the icons class
+            } else {
+                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); // Replacing the icons class
+            }
+        }
+        
+          </script>
+  </body>
+</html>
