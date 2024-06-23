@@ -11,25 +11,22 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
 import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+*jh7iq+z0!y3y@6s*-g%&&0s255a1)^33%m)vk-g2vj&clx0y'
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-+*jh7iq+z0!y3y@6s*-g%&&0s255a1)^33%m)vk-g2vj&clx0y')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',')
 
 # Application definition
 
@@ -77,20 +74,11 @@ WSGI_APPLICATION = 'akmedia.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+DATABASE_URL = config('DATABASE_URL', default='postgresql://postgres:MGfIzTFMNaOpNROzIOdHgujAaKQpOkPb@roundhouse.proxy.rlwy.net:37579/railway')
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'MGfIzTFMNaOpNROzIOdHgujAaKQpOkPb',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '37579',
-    }
+    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
 }
-
-DATABASE_URL = "postgresql://postgres:MGfIzTFMNaOpNROzIOdHgujAaKQpOkPb@roundhouse.proxy.rlwy.net:37579/railway"
-
-DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -110,7 +98,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -121,7 +108,6 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
