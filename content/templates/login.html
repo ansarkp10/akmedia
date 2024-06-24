@@ -4,78 +4,101 @@
 <head>
   <style>
     /* General styling */
-body {
-  padding-top: 150px;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); /* Greenish gradient for the body */
-}
+    body {
+      padding-top: 150px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); /* Greenish gradient for the body */
+      margin: 0;
+    }
 
-/* Form box with a greenish gradient */
-.form-box {
-  width: 300px;
-  padding: 20px;
-  margin: auto;
-  background: linear-gradient(to right, #00AD83, #008B8B); /* Pale Green to Crayola Green gradient */
-  color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
+    /* Form box with a greenish gradient */
+    .form-box {
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      margin: auto;
+      background: linear-gradient(to right, #00AD83, #008B8B); /* Pale Green to Crayola Green gradient */
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
 
-.form-box:hover {
-  transform: translateY(-5px);
-}
+    .form-box:hover {
+      transform: translateY(-5px);
+    }
 
-/* Form elements */
-label {
-  display: block;
-  margin-top: 15px;
-}
+    /* Form elements */
+    label {
+      display: block;
+      margin-top: 15px;
+    }
 
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-button {
-  background-color: #008000; /* Dark green */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
+    button {
+      background-color: #008000; /* Dark green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
 
-button:hover {
-  background-color: #006600; /* Even darker green */
-}
+    button:hover {
+      background-color: #006600; /* Even darker green */
+    }
 
+    button a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      body {
+        padding-top: 50px;
+      }
+
+      .form-box {
+        width: 95%;
+        padding: 15px;
+      }
+
+      button {
+        padding: 10px;
+      }
+    }
   </style>
 </head>
-  <div class="form-box"> <!-- Wrap the form in a div with class "form-box" -->
-    <h2>Login</h2>
-    <form method="post" enctype="multipart/form-data" action="{% url 'login' %}">
-      {% csrf_token %}
-      {% if error_message %}
-        <p style="color: red">{{ error_message }}</p>
-      {% endif %}
-      <p>
-        <label>Username:</label>
-        <input type="text" name="username">
-      </p>
-      <p>
-        <label>Password:</label>
-        <input type="password" name="password">
-      </p>
-      <button type="submit">Login</button>
-      <button type="submit"><a href="{% url 'signup' %}" style="color: white; text-decoration: none;">signup</a></button>
-    </form>
-    
-  </div> <!-- Close the div -->
+<div class="form-box">
+  <h2>Login</h2>
+  <form method="post" enctype="multipart/form-data" action="{% url 'login' %}">
+    {% csrf_token %}
+    {% if error_message %}
+      <p style="color: red">{{ error_message }}</p>
+    {% endif %}
+    <p>
+      <label>Username:</label>
+      <input type="text" name="username">
+    </p>
+    <p>
+      <label>Password:</label>
+      <input type="password" name="password">
+    </p>
+    <button type="submit">Login</button>
+    <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+  </form>
+</div>
 {% endblock %}
