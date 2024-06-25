@@ -9,92 +9,114 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <style>
-    /* General styling */
-    body {
-      padding-top: 150px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
-      margin: 0;
-    }
 
-    /* Form box with a greenish gradient */
-    .form-box {
-      width: 90%;
-      max-width: 400px;
-      padding: 20px;
-      margin: auto;
-      background: linear-gradient(to right, #00AD83, #008B8B);
-      color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
-    }
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); /* Green gradient background */
+        }
 
-    .form-box:hover {
-      transform: translateY(-5px);
-    }
+        h1 {
+            font-size: 2.5em;
+            color: black; /* Green color */
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease-in-out;
+            text-align: center;
+        }
 
-    /* Form elements */
-    label {
-      display: block;
-      margin-top: 15px;
-    }
+        /* Fade-in-down animation for heading */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-in-out;
+        }
 
-    button {
-      background-color: #008000;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
-      width: 100%;
-    }
+        /* Fade-in-up animation for form */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    button:hover {
-      background-color: #006600;
-    }
+        /* Button styling */
+        button {
+            background: #34c759; /* Apple-style green */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-    .button-container {
-      display: flex;
-      justify-content: space-between;
-    }
+        button:hover {
+            background: #30b357; /* Slightly darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
 
-    .button-container button {
-      width: 48%;
-    }
+        /* Link styling */
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #34c759; /* Green link */
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-align: center;
+        }
 
-    /* Responsive design */
-    @media (max-width: 600px) {
-      body {
-        padding-top: 50px;
-      }
+        a:hover {
+            color: #2fa348; /* Darker green on hover */
+        }
 
-      .form-box {
-        width: 95%;
-        padding: 15px;
-      }
+        /* Form elements styling */
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 14px;
+        }
 
-      .button-container {
-        flex-direction: column;
-      }
+        input:focus, select:focus, textarea:focus {
+            border-color: #34c759; /* Green border on focus */
+            box-shadow: 0 0 8px rgba(52, 199, 89, 0.3); /* Green shadow on focus */
+        }
 
-      .button-container button {
-        width: 100%;
-        margin-top: 10px;
-      }
-    }
-
+        /* Label styling */
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
     /* side navigation bar /*
 
  /* Google Font Link */
@@ -604,27 +626,13 @@
   </div>
 <div>
   <div class="form-box">
-    <h2>Create User</h2>
-    <form method="post" enctype="multipart/form-data" action="{% url 'signup' %}">
-      {% csrf_token %}
-      {% if error_message %}
-        <p style="color: red">{{ error_message }}</p>
-      {% endif %}
-      <p>
-        <label>Username:</label>
-        <input type="text" name="username" required>
-      </p>
-      <p>
-        <label>Password:</label>
-        <input type="password" name="password" required>
-      </p>
-      <p>
-        <label>Confirm Password:</label>
-        <input type="password" name="confirm_password" required>
-      </p>
-      <button type="submit">Signup</button>
-      <button type="button" onclick="location.href='{% url 'login' %}'">Login</button>
-    </form>
+    <h1>Signup</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Signup</button>
+    <a href="{% url 'login' %}">Already have account?</a>
+</form>
   </div>
 </div>
     <script>
