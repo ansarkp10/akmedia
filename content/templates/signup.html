@@ -2,6 +2,8 @@
 
 {% block content %}
 <head>
+  <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <style>
     /* General styling */
     body {
@@ -592,36 +594,34 @@
 }
   </style>
 </head>
-<body>
+<body style="padding-left: 45px;">
 <div class="sidebar">
       {% include 'menu.html' %}
   </div>
 <div>
-<div class="form-box">
-  <h2>Create User</h2>
-  <form method="post" enctype="multipart/form-data" action="{% url 'signup' %}">
-    {% csrf_token %}
-    {% if error_message %}
-      <p style="color: red">{{ error_message }}</p>
-    {% endif %}
-    <p>
-      <label>Username:</label>
-      <input type="text" name="username" required>
-    </p>
-    <p>
-      <label>Password:</label>
-      <input type="password" name="password" required>
-    </p>
-    <p>
-      <label>Confirm Password:</label>
-      <input type="password" name="confirm_password" required>
-    </p>
-    <div class="button-container">
+  <div class="form-box">
+    <h2>Create User</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'signup' %}">
+      {% csrf_token %}
+      {% if error_message %}
+        <p style="color: red">{{ error_message }}</p>
+      {% endif %}
+      <p>
+        <label>Username:</label>
+        <input type="text" name="username" required>
+      </p>
+      <p>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+      </p>
+      <p>
+        <label>Confirm Password:</label>
+        <input type="password" name="confirm_password" required>
+      </p>
       <button type="submit">Signup</button>
-      <button type="button" onclick="window.location.href='{% url 'login' %}'"> Login</button>
-    </div>
-  </form>
-</div>
+      <button type="button" onclick="location.href='{% url 'login' %}'">Login</button>
+    </form>
+  </div>
 </div>
 </body>
 {% endblock %}
