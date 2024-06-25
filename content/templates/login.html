@@ -7,7 +7,7 @@
     body {
       padding-top: 150px;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); /* Greenish gradient for the body */
+      background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
       margin: 0;
     }
 
@@ -17,7 +17,7 @@
       max-width: 400px;
       padding: 20px;
       margin: auto;
-      background: linear-gradient(to right, #00AD83, #008B8B); /* Pale Green to Crayola Green gradient */
+      background: linear-gradient(to right, #00AD83, #008B8B);
       color: white;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@
     }
 
     button {
-      background-color: #008000; /* Dark green */
+      background-color: #008000;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -56,13 +56,16 @@
     }
 
     button:hover {
-      background-color: #006600; /* Even darker green */
+      background-color: #006600;
     }
 
-    button a {
-      color: white;
-      text-decoration: none;
-      display: block;
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button-container button {
+      width: 48%;
     }
 
     /* Responsive design */
@@ -76,8 +79,13 @@
         padding: 15px;
       }
 
-      button {
-        padding: 10px;
+      .button-container {
+        flex-direction: column;
+      }
+
+      .button-container button {
+        width: 100%;
+        margin-top: 10px;
       }
     }
   </style>
@@ -97,8 +105,10 @@
       <label>Password:</label>
       <input type="password" name="password">
     </p>
-    <button type="submit">Login</button>
-    <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+    <div class="button-container">
+      <button type="submit">Login</button>
+      <button type="button" onclick="window.location.href='{% url 'signup' %}'"> Signup</button>
+    </div>
   </form>
 </div>
 {% endblock %}
