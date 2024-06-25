@@ -98,11 +98,7 @@ def login(request):
             return render(request, 'login.html', {'error_message': error_message})
     else:
         return render(request, 'login.html')
-
-def logout(request):
-    authlogout(request)
-    return redirect('login')
-
+    
 def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -121,6 +117,10 @@ def signup(request):
         return redirect('login')
     
     return render(request, 'signup.html')
+
+def logout(request):
+    authlogout(request)
+    return redirect('login')
 
 @login_required
 def menu(request):
