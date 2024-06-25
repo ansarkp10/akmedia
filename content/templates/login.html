@@ -90,6 +90,11 @@
     }
   </style>
 </head>
+<body>
+<div class="sidebar">
+      {% include 'menu.html' %}
+  </div>
+<div>
 <div class="form-box">
   <h2>Login</h2>
   <form method="post" enctype="multipart/form-data" action="{% url 'login' %}">
@@ -111,4 +116,6 @@
     </div>
   </form>
 </div>
+  </div>
+</body>
 {% endblock %}
