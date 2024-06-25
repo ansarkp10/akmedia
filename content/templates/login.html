@@ -599,7 +599,7 @@
       {% include 'menu.html' %}
   </div>
 <div>
-<div class="form-box">
+  <div class="form-box">
   <h2>Login</h2>
   <form method="post" enctype="multipart/form-data" action="{% url 'login' %}">
     {% csrf_token %}
@@ -614,12 +614,10 @@
       <label>Password:</label>
       <input type="password" name="password">
     </p>
-    <div class="button-container">
-      <button type="submit">Login</button>
-      <button type="button" onclick="window.location.href='{% url 'signup' %}'"> Signup</button>
-    </div>
+    <button type="submit">Login</button>
+    <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
   </form>
-</div>
+  </div>
   </div>
 </body>
 {% endblock %}
