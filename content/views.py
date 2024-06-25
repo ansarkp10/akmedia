@@ -3,9 +3,10 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login as authlogin, logout as authlogout
+from django.contrib.auth import authenticate, login , logout
 from .models import Content, ContentDetail
 from .forms import ContentForm, ContentDetailForm
+from .forms import SignupForm, LoginForm
 from django.forms import modelformset_factory
 
 
@@ -85,43 +86,40 @@ def contact(request):
 def services(request):
     return render(request, 'services.html')
 
-def login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user:
-            authlogin(request, user)
-            return redirect('index')
-        else:
-            error_message = "Invalid username or password."
-            return render(request, 'login.html', {'error_message': error_message})
-    else:
-        return render(request, 'login.html')
-    
-def signup(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        confirm_password = request.POST.get('confirm_password')
-        
-        if password != confirm_password:
-            error_message = 'Passwords do not match.'
-            return render(request, 'signup.html', {'error_message': error_message})
-        
-        if User.objects.filter(username=username).exists():
-            error_message = 'Username already exists. Please choose a different one.'
-            return render(request, 'signup.html', {'error_message': error_message})
-        
-        user = User.objects.create_user(username=username, password=password)
-        return redirect('login')
-    
-    return render(request, 'signup.html')
-
-def logout(request):
-    authlogout(request)
-    return redirect('login')
-
 @login_required
 def menu(request):
     return render(request, 'menu.html')
+
+def index(request):
+    return render(request, 'index.html')
+
+# signup page
+def user_signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
+
+# login page
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user:
+                login(request, user)    
+                return redirect('home')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+# logout page
+def user_logout(request):
+    logout(request)
+    return redirect('login')
