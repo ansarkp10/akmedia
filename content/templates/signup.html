@@ -621,45 +621,55 @@ body {
   </style>
 </head>
 <body style="padding-left: 45px;">
-<div class="sidebar">
+  <div class="sidebar">
       {% include 'menu.html' %}
   </div>
-<div>
-  <div class="form-box">
-    <h1>Signup</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Signup</button>
-    <a href="{% url 'login' %}">Already have account?</a>
-</form>
+  <div>
+      <div class="form-box">
+          <h1>Signup</h1>
+          <form method="POST">
+              {% csrf_token %}
+              <div>
+                  <label for="id_username">Username:</label>
+                  <input type="text" name="username" id="id_username" maxlength="150" placeholder="eg: fazil" required>
+              </div>
+              <div>
+                  <label for="id_password1">Password:</label>
+                  <input type="password" name="password1" id="id_password1" placeholder="eg: fazil@#12345" required>
+              </div>
+              <div>
+                  <label for="id_password2">Password confirmation:</label>
+                  <input type="password" name="password2" id="id_password2" required>
+              </div>
+              <button type="submit">Signup</button>
+              <a href="{% url 'login' %}">Already have an account?</a>
+          </form>
+      </div>
   </div>
-</div>
-    <script>
-        let sidebar = document.querySelector(".sidebar");
-        let closeBtn = document.querySelector("#btn");
-        let searchBtn = document.querySelector(".bx-search");
-        
-        closeBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-            menuBtnChange(); // Calling the function (optional)
-        });
-        
-        searchBtn.addEventListener("click", () => {
-            // Sidebar open when you click on the search icon
-            sidebar.classList.toggle("open");
-            menuBtnChange(); // Calling the function (optional)
-        });
-        
-        // Following are the code to change sidebar button (optional)
-        function menuBtnChange() {
-            if (sidebar.classList.contains("open")) {
-                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); // Replacing the icons class
-            } else {
-                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); // Replacing the icons class
-            }
-        }
-        
-    </script>
-</body>
-</html>
+  <script>
+      let sidebar = document.querySelector(".sidebar");
+      let closeBtn = document.querySelector("#btn");
+      let searchBtn = document.querySelector(".bx-search");
+  
+      closeBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("open");
+          menuBtnChange(); // Calling the function (optional)
+      });
+  
+      searchBtn.addEventListener("click", () => {
+          // Sidebar open when you click on the search icon
+          sidebar.classList.toggle("open");
+          menuBtnChange(); // Calling the function (optional)
+      });
+  
+      // Following are the code to change sidebar button (optional)
+      function menuBtnChange() {
+          if (sidebar.classList.contains("open")) {
+              closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); // Replacing the icons class
+          } else {
+              closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); // Replacing the icons class
+          }
+      }
+  </script>
+  </body>
+  </html>
