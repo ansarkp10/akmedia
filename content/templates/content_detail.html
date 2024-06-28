@@ -173,10 +173,18 @@ td .text-content {
 @media (max-width: 768px) {
     table, th, td {
         font-size: 14px;
+        padding: 10px; /* Adjust padding for better spacing */
+    }
+    td {
+        word-wrap: break-word; /* Ensure text wraps */
+        white-space: normal; /* Allow text to wrap to the next line */
     }
     td img, td video, td a, td audio, td .text-content {
-        max-width: 120px;
-        max-height: 100px;
+        max-width: 100%; /* Allow content to take full width */
+        max-height: 100px; /* Maintain max height for images/videos */
+    }
+    th, td {
+        text-align: left; /* Align text to the left for better readability */
     }
 }
 
