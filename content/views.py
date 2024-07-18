@@ -7,28 +7,29 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Content, ContentDetail
 from .forms import ContentForm, ContentDetailForm, SignupForm, LoginForm
 from django.forms import modelformset_factory
+from django.views.decorators.cache import cache_page
 
-
+@cache_page(60 * 15)  # Cache this view for 15 minutes
 def index(request):
     search_query = request.GET.get('search', '')
     if request.user.is_authenticated:
         if search_query:
-            contents = Content.objects.filter(user=request.user, title__icontains=search_query)
+            contents = Content.objects.filter(user=request.user, title__icontains=search_query).select_related('user')
         else:
-            contents = Content.objects.filter(user=request.user)
+            contents = Content.objects.filter(user=request.user).select_related('user')
     else:
         contents = Content.objects.none()  # Return an empty queryset if the user is not authenticated
-    
+
     paginator = Paginator(contents, 5)  # Show 5 contents per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
+
     return render(request, 'index.html', {'contents': page_obj})
 
 
 @login_required(login_url='login')
 def content_detail(request, pk):
-    content = get_object_or_404(Content, pk=pk, user=request.user)
+    content = get_object_or_404(Content.objects.select_related('user'), pk=pk, user=request.user)
     return render(request, 'content_detail.html', {'content': content})
 
 
@@ -43,9 +44,10 @@ def content_create(request):
             content.user = request.user
             content.save()
             for form in formset:
-                content_detail = form.save(commit=False)
-                content_detail.content = content
-                content_detail.save()
+                if form.cleaned_data:
+                    content_detail = form.save(commit=False)
+                    content_detail.content = content
+                    content_detail.save()
             return redirect('index')
     else:
         form = ContentForm()
@@ -85,14 +87,17 @@ def content_delete(request, pk):
     return redirect('index')
 
 
+@cache_page(60 * 15)  # Cache this view for 15 minutes
 def about(request):
     return render(request, 'about.html')
 
 
+@cache_page(60 * 15)  # Cache this view for 15 minutes
 def contact(request):
     return render(request, 'contact.html')
 
 
+@cache_page(60 * 15)  # Cache this view for 15 minutes
 def services(request):
     return render(request, 'services.html')
 
