@@ -763,28 +763,36 @@ body {
             </div>
             
             <div class="contact-form">
-              <form action="" id="contact-form">
-                <h2>Send Message</h2>
-                <div class="input-box">
-                  <input type="text" required="true" name="">
-                  <span>Full Name</span>
-                </div>
-                
-                <div class="input-box">
-                  <input type="email" required="true" name="">
-                  <span>Email</span>
-                </div>
-                
-                <div class="input-box">
-                  <textarea required="true" name=""></textarea>
-                  <span>Type your Message...</span>
-                </div>
-                
-                <div class="input-box">
-                  <input type="submit" value="Send" name="">
-                </div>
-              </form>
-            </div>
+  <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+    <!-- Web3Forms Access Key -->
+    <input type="hidden" name="access_key" value="5ea3007e-620e-4fd5-97ca-4d14216fb6d1">
+
+    <h2>Send Message</h2>
+    
+    <div class="input-box">
+      <input type="text" name="name" required>
+      <span>Full Name</span>
+    </div>
+    
+    <div class="input-box">
+      <input type="email" name="email" required>
+      <span>Email</span>
+    </div>
+    
+    <div class="input-box">
+      <textarea name="message" required></textarea>
+      <span>Type your Message...</span>
+    </div>
+    
+    <!-- Honeypot Spam Protection -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+    <div class="input-box">
+      <input type="submit" value="Send">
+    </div>
+  </form>
+</div>
+
             
           </div>
         </div><br>
